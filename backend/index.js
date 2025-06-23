@@ -7,6 +7,8 @@ const {
   AssignedComplaint,
   MessageSchema,
 } = require("./Schema");
+const { connection, connect } = require("mongoose");
+const connectToMongodb = require("./config");
 const app = express();
 const PORT = 8000;
 
@@ -151,20 +153,28 @@ app.delete("/OrdinaryUsers/:id", async (req, res) => {
 ///////////////complaint register by user and its status checking///////////////
 app.post("/Complaint/:id", async (req, res) => {
   const UserId = req.params.id;
+
   try {
     const user = await UserSchema.findById(UserId);
+
     if (!user) {
       return res.status(404).json({ error: "User not found" });
-    } else {
-      const complaint = new ComplaintSchema(req.body);
-      let resultComplaint = await complaint.save();
-      res.send(resultComplaint).status(200);
     }
+
+    const complaint = new ComplaintSchema({
+      ...req.body,
+      userId: UserId, // ✅ explicitly add userId from URL param
+    });
+
+    const resultComplaint = await complaint.save();
+    res.status(200).send(resultComplaint);
+
   } catch (error) {
-    console.error(error);
+    console.error("❌ Error registering complaint:", error);
     res.status(500).json({ error: "Failed to register complaint" });
   }
 });
+
 
 /////////////////for the all complaints made by the single user/////////////
 app.get("/status/:id", async (req, res) => {
@@ -293,4 +303,7 @@ app.put("/complaint/:complaintId", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => console.log(`server started at ${PORT}`));
+app.listen(PORT, async() => {
+  console.log(`server started at ${PORT}`)
+  await connectToMongodb()
+});
