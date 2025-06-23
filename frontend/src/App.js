@@ -29,7 +29,7 @@ function App() {
               <Route path="/UserInfo" element={<UserInfo />} />
               <Route path="/AgentHome" element={<AgentHome />} />
               <Route path="/AdminHome" element={<AdminHome />} />
-              <Route path="/Homepage" element={<HomePage />} />
+              <Route path="/HomePage" element={<HomePage />} />
               <Route path="/Complaint" element={<Complaint />} />
               <Route path="/Status" element={<Status />} />
             </>
