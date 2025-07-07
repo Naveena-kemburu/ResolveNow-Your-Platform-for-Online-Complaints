@@ -1,8 +1,8 @@
 
 
+
 # ResolveNow – Online Complaint Management Platform
 
-## 👨‍💻 Intern: Palaparthi Veera Durga Siva Krishna  
 SmartInternz x IBM Virtual Internship 2025  
 Aditya College of Engineering and Technology  
 
@@ -12,8 +12,8 @@ Aditya College of Engineering and Technology
 - Node.js + Express (Backend)
 - MongoDB (Database)
 
-## 📄 Documentation:
-[ResolveNow_Documentation_Siva_Krishna (1).docx](https://github.com/user-attachments/files/21107376/ResolveNow_Documentation_Siva_Krishna.1.docx)
+## 📄 Documentation:[ResolveNow_Team_Project_Documentation.docx](https://github.com/user-attachments/files/21107459/ResolveNow_Team_Project_Documentation.docx)
+
 
 
 
